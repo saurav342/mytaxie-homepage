@@ -8,7 +8,7 @@ const FlightDataTable = () => {
 
   useEffect(() => {
     (async () => {
-      const result = await axios("http://13.127.5.69:4000/v1/flight");
+      const result = await axios("https://api.mytaxie.com/v1/flight");
       console.log("...result....", result);
       setData(result.data.results);
     })();

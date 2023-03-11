@@ -31,7 +31,7 @@ const FlightDetails = () => {
   const handleData = (e) => {
     e.preventDefault();
     axios
-      .post("http://13.127.5.69:4000/v1/flight", {
+      .post("https://api.mytaxie.com/v1/flight", {
         from: fromCity,
         to: toCity,
         phoneNumber: phoneNum,
