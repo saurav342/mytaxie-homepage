@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useTable } from "react-table";
 import axios from "axios";
 
@@ -10,7 +10,7 @@ const FlightDataTable = () => {
     (async () => {
       const result = await axios("http://13.127.5.69:4000/v1/flight");
       console.log("...result....", result);
-      setData(result.data.results);
+      setData(result.data);
     })();
   }, []);
 
