@@ -3,9 +3,11 @@ import data from "./data.json";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FlightDetails = () => {
   console.log("this data.......", data);
+  const navigate = useNavigate();
   const [fromCity, setFromCity] = useState("From ....");
   const [toCity, setToCity] = useState("To....");
   const [phoneNum, setValue] = useState();
@@ -41,7 +43,7 @@ const FlightDetails = () => {
         console.log("...........response", response);
       })
       .finally(function () {
-        console.log("ok");
+        navigate("/flightsuccess");
       });
   };
 
