@@ -3,9 +3,11 @@ import data from "./data.json";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const FlightDetails = () => {
   console.log("this data.......", data);
+  const navigate = useNavigate();
   const [fromCity, setFromCity] = useState("From ....");
   const [toCity, setToCity] = useState("To....");
   const [cityList, setCityList] = useState(data);
@@ -49,7 +51,7 @@ const FlightDetails = () => {
   const handleData = (e) => {
     e.preventDefault();
     axios
-      .post("http://13.127.5.69:4000/v1/flight", {
+      .post("https://api.mytaxie.com/v1/flight", {
         from: fromCity,
         to: toCity,
         phoneNumber: phoneNum,
@@ -59,7 +61,7 @@ const FlightDetails = () => {
         console.log("...........response", response);
       })
       .finally(function () {
-        console.log("ok");
+        navigate("/flightsuccess");
       });
   };
 
