@@ -1,12 +1,5 @@
-{
-    "from": ["Mumbai", "Chennai", "Kolkata", "Bangalore", "Lucknow", "Amritsar", "Visakhapatnam", "kannur",
-        "Surat", "Indore", "Kochi", "Ahmedabad", "Delhi", "Goa", "Pune", "Thiruvananthapuram", "Coimbatore",
-        "Calicut", "Bhubaneswar", "Guwahati", "Varanasi", "Hyderabad", "Tiruchirappalli", "Nagpur",
-        "Srinagar", "Imphal", "Jaipur", "Madurai", "Siliguri", "Patna", "Mangalore", "Chandigarh", "Ranchi"
-    ],
-    "to": ["Mumbai", "Chennai", "Kolkata", "Bangalore", "Lucknow", "Amritsar", "Visakhapatnam", "kannur",
+ ["Mumbai", "Chennai", "Kolkata", "Bangalore", "Lucknow", "Amritsar", "Visakhapatnam", "kannur",
         "Surat", "Indore", "Kochi", "Ahmedabad", "Delhi", "Goa", "Pune", "Thiruvananthapuram", "Coimbatore",
         "Calicut", "Bhubaneswar", "Guwahati", "Varanasi", "Hyderabad", "Tiruchirappalli", "Nagpur",
         "Srinagar", "Imphal", "Jaipur", "Madurai", "Siliguri", "Patna", "Mangalore", "Chandigarh", "Ranchi"
     ]
-}

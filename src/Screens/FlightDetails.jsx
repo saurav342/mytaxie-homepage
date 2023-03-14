@@ -10,6 +10,7 @@ const FlightDetails = () => {
   const navigate = useNavigate();
   const [fromCity, setFromCity] = useState("From ....");
   const [toCity, setToCity] = useState("To....");
+  const [cityList, setCityList] = useState(data);
   const [phoneNum, setValue] = useState();
   const [flightDate, setFlightDate] = useState("");
 
@@ -18,6 +19,23 @@ const FlightDetails = () => {
       setValue("enter valid number");
     }
   };
+
+  const handleFromCity =(e) =>{
+    setFromCity(e.target.value)
+    var cityListArr = cityList;
+
+    var newarr = [];
+    console.log("........fromCity",fromCity)
+    
+    for (let i = 0; i < cityListArr.length; i++) {
+      console.log("........fromCity", fromCity);
+      if (e.target.value != cityListArr[i]) {
+        newarr = [...newarr, cityListArr[i]];
+      }
+    }
+    setCityList(newarr);
+  console.log("................",newarr)
+  }
 
   const handleValidation = () => {
     if (
@@ -66,12 +84,12 @@ const FlightDetails = () => {
                 <div className="form-group">
                   <select
                     className="ajaxField flightDetails"
-                    onChange={(e) => setFromCity(e.target.value)}
+                    onChange={handleFromCity}
                     value=""
                     required
                   >
                     <option value="From"> {fromCity}</option>
-                    {data.from.map((city, index) => (
+                    {cityList.map((city, index) => (
                       <option>{city}</option>
                     ))}
                   </select>
@@ -85,7 +103,7 @@ const FlightDetails = () => {
                     onChange={(e) => setToCity(e.target.value)}
                   >
                     <option value="">{toCity}</option>
-                    {data.to.map((city, index) => (
+                    {cityList.map((city, index) => (
                       <option>{city}</option>
                     ))}
                   </select>
