@@ -1,5 +1,4 @@
 import { useState } from "react";
-import data from "./data.json";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";

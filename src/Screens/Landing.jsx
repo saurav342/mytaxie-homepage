@@ -1,4 +1,4 @@
-function Landing(){
+const Landing = ()=>{
     return(
         <>
         <h1>
