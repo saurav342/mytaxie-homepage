@@ -1,4 +1,54 @@
+import axios from "axios";
+import { useRef, useState } from "react";
+import PhoneInput from "react-phone-number-input";
+import { useNavigate } from "react-router-dom";
+import { LoadScript,StandaloneSearchBox } from "@react-google-maps/api";
+import {taxiType} from "../Utils/constants.js"
+
 const Home =()=>{
+	const navigate = useNavigate()
+    const[fromAddress, setAddress]=useState("")
+	const[destinationAddress,setDestAddress] = useState("")
+	const [phoneNum,setValue]=useState();
+	const[taxiDate,setTaxiDate]=useState(new Date())
+	const[carType, setCartype] = useState("Car Type");
+	
+     
+	
+	const searchBox = useRef(null)
+	const onPlacesChanged = () => {
+		console.log("...........places..............",searchBox.getPlaces())
+	}
+	const fromSearchBox = useRef(null)
+	const onPlacesFromChanged = () => {
+		console.log("...........places..............",fromSearchBox.getPlaces())
+	}
+
+
+	const handleLength =(e) =>{
+		if(e.target.value.length > e.target.maxLength){
+			setValue("Enter valid number")
+		}
+	}
+
+	const handleTaxiDetails = (e) =>{
+		e.preventDefult();
+		axios
+		.post("https://api.mytaxie.com/v1/taxi",{
+			from:fromAddress,
+			to:destinationAddress,
+			phoneNumber:phoneNum,
+			date:taxiDate,
+			typeOfCar:carType
+		})
+		.then(function(response){
+			console.log("...........Taxi Details", response);
+		})
+		.finally(function(){
+			navigate("/taxiSuccess")
+		});
+	};
+	
     return(
         <>
 
@@ -6,31 +56,66 @@ const Home =()=>{
 		<div className="container">
 			<h2>Get Taxi Online</h2>
 
-			<form className="form-validate" novalidate="novalidate">
+			<form className="form-validate" noValidate="novalidate" onSubmit={handleTaxiDetails}>
 				<div className="row forms">
 					<div className="col-md-5ths">
-						<div className="form-group">
-							<input type="text" value="" name="from" placeholder="From Address..." className="ajaxField"/><span className="fa fa-map-marker"></span>
+						<div className="form-group">	<LoadScript  libraries={["places"]} googleMapsApiKey = "AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
+							<StandaloneSearchBox  ref={fromSearchBox}  onPlacesChanged={onPlacesFromChanged}>
+							<input type="text" value={fromAddress} name="from" placeholder="From Address..."
+							 className="ajaxField" 
+							  onChange={(e)=>setAddress(e.onPlacesFromChanged)}/>
+								</StandaloneSearchBox>
+							</LoadScript>
+						
 						</div>
 					</div>
 					<div className="col-md-5ths">
 						<div className="form-group">
-							<input type="text" value="" name="to" placeholder="To..." className="ajaxField"/><span className="fa fa-map-marker"></span>
+							<LoadScript  libraries={["places"]} googleMapsApiKey = "AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
+							<StandaloneSearchBox  ref={searchBox}  onPlacesChanged={onPlacesChanged}>
+								<input type="text" value={destinationAddress} placeholder="To....." name="to"
+								className="ajaxField"
+								onChange={(e)=>{
+									e.preventDefault()
+									setDestAddress(e.onPlacesChanged)}}/>
+								</StandaloneSearchBox>
+							</LoadScript>
+							
 						</div>
 					</div>
 					<div className="col-md-5ths">
 						<div className="form-group">
-							<input type="text" value="" name="phone" placeholder="Phone Number" className="ajaxField required" aria-required="true"/><span className="fa fa-phone"></span>
+							<PhoneInput
+							className="ajaxField flightDetails"
+							placeholder = "Phone Number"
+							defaultCountry="IN"
+							value={phoneNum}
+							onChange={setValue}
+							style={{ display: "flex" }}
+							maxLength="11"
+							onInput={handleLength}
+
+							/>
 						</div>
 					</div>
 					<div className="col-md-5ths">
 						<div className="form-group">
-							<input type="text" value="" name="text" placeholder="Date and Time" className="ajaxField"/><span className="fa fa-calendar"></span>
+						<input type="date" onChange={(e) => setTaxiDate(e.target.value)}
+                    value={taxiDate}
+                    className="ajaxFeild flightDetails"
+                  />
 						</div>
 					</div>
 					<div className="col-md-5ths">
 						<div className="form-group">
-							<input type="text" value="" name="type-value" placeholder="Car Type" className="ajaxField"/><span className="fa fa-car"></span>
+							<select className="ajaxField flightDetails"
+							onChange={(e)=>setCartype(e.target.value)}>
+							<option value="">{carType}</option>{
+								taxiType.map((taxi,index)=>(
+									<option>{taxi}</option>
+								))
+							}
+							</select>
 						</div>
 					</div>
 				</div>

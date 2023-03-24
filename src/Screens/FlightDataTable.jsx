@@ -45,17 +45,20 @@ const FlightDataTable = () => {
     useTable({ columns, data });
 
   return (
-    <table 
-    {...getTableProps()} 
+    <>
+<div className="limiter">
+<div className="container-table100">
+<div className="wrap-table100">
+<div className="table100">
+<table   {...getTableProps()} 
     style={{
       borderBottom: "solid 3px blue",
       border: "1px solid black",
       fontWeight: "bold",
-    }}
-    >
-      <thead>
-        {headerGroups.map((headerGroup) => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
+    }}>
+<thead>
+{headerGroups.map((headerGroup) => (
+          <tr className="table100-head" {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
               <th
                 {...column.getHeaderProps()}
@@ -71,20 +74,26 @@ const FlightDataTable = () => {
             ))}
           </tr>
         ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
+</thead>
+<tbody {...getTableBodyProps()}>
         {rows.map((row) => {
           prepareRow(row);
           return (
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
-                return <td {...cell.getCellProps()}>{cell.render("Cell")}</td>;
+                return <td className="column1"{...cell.getCellProps()}>{cell.render("Cell")}</td>;
               })}
             </tr>
           );
         })}
       </tbody>
-    </table>
+</table>
+</div>
+</div>
+</div>
+</div>
+    </>
+  
   );
 };
 export default FlightDataTable;

@@ -1,16 +1,16 @@
 import { useState } from "react";
-import data from "./data.json";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import {flightData} from "../Utils/constants.js"
 
 const FlightDetails = () => {
-  console.log("this data.......", data);
+  console.log("this data.......", flightData);
   const navigate = useNavigate();
   const [fromCity, setFromCity] = useState("From ....");
   const [toCity, setToCity] = useState("To....");
-  const [cityList, setCityList] = useState(data);
+  const [cityList, setCityList] = useState(flightData);
   const [phoneNum, setValue] = useState();
   const [flightDate, setFlightDate] = useState("");
 
@@ -39,10 +39,10 @@ const FlightDetails = () => {
 
   const handleValidation = () => {
     if (
-      fromCity == "From ...." ||
-      toCity == "To...." ||
-      phoneNum == null ||
-      flightDate == ""
+      fromCity === "From ...." ||
+      toCity === "To...." ||
+      phoneNum === null ||
+      flightDate === ""
     ) {
       return false;
     } else return true;
@@ -76,7 +76,7 @@ const FlightDetails = () => {
           <h2>Book Your Flight Tickets</h2>
           <form
             className="form-validate"
-            novalidate="novalidate"
+            noValidate="novalidate"
             onSubmit={handleData}
           >
             <div className="row forms FlightWidth">
