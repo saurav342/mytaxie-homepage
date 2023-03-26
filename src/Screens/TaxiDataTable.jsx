@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useTable } from "react-table";
 import React, { useEffect, useState } from "react";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
 const TaxiDatatable = () =>{
 
@@ -56,7 +58,7 @@ const TaxiDatatable = () =>{
         useTable({ columns, taxiData });
     return(
         <>
-        <div className="limiter">
+        {/* <div className="limiter">
         <div className="container-table100">
         <div className="wrap-table100">
         <div className="table100">
@@ -101,7 +103,21 @@ const TaxiDatatable = () =>{
         </div>
         </div>
         </div>
-        </div>
+        </div> */}
+
+         <Tabs>
+    <TabList>
+      <Tab>Title 1</Tab>
+      <Tab>Title 2</Tab>
+    </TabList>
+
+    <TabPanel>
+      <h2>Any content 1</h2>
+    </TabPanel>
+    <TabPanel>
+      <h2>Any content 2</h2>
+    </TabPanel>
+  </Tabs>
             </>
     );
 }
