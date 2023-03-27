@@ -10,24 +10,7 @@ const Home = () => {
 	return  (
 		<>
 
-			<div id="homepage-block-2" className="bgMove" style={{ backgroundImage: "url(assets/images/_homepage-1-bg.jpg)" }}>
-				<div className="container">
-					<h2>Get Taxi Online</h2>
-
-					<TaxiDetails/>
-
-					<div id="large-image">
-						<img src="assests/TaxiPark_files/_car-big-2.png" alt="Taxi" />
-						<div className="dialog">
-							<span className="fa fa-phone"></span>
-							<h4 className="white">Call TAXI Now</h4>
-							<h3 className="yellow">800-5-800</h3>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div className="homepage-block-yellow-2">
-			</div>
+			<TaxiDetails/>
 
 			<section id="services">
 				<div className="container">
