@@ -150,11 +150,11 @@ const FlightDetails = () => {
 
           <div id="large-image">
             <img src="assests/TaxiPark_files/_car-big-2.png" alt="Taxi" />
-            <div className="dialog">
+            {/* <div className="dialog">
               <span className="fa fa-phone"></span>
               <h4 className="white">Call TAXI Now</h4>
               <h3 className="yellow">800-5-800</h3>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

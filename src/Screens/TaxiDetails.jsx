@@ -80,9 +80,9 @@ const TaxiDetails = () => {
             noValidate="novalidate"
             onSubmit={handleData}
           >
-            <div className="row forms FlightWidth">
-
+            <div className="row forms">
               <div className="col-md-5ths">
+              <div className="form-group">
                 <LoadScript libraries={["places"]} googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
                   <StandaloneSearchBox
                     onLoad={ref => searchFromBox.current = ref}
@@ -96,6 +96,7 @@ const TaxiDetails = () => {
                     />
                   </StandaloneSearchBox>
                 </LoadScript>
+              </div>
               </div>
               <div className="col-md-5ths">
                 <div className="form-group">
