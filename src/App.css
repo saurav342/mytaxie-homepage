@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+.contactUsBox{
+  background-color: blueviolet;
+}
+
+.react-datepicker__navigation-icon {
+  position: relative !important;
+  top: -7px !important;
+  font-size: 20px !important;
+  width: 0;
+  right: 2px !important;
+}
+body, div, table {
+  font-size: 13px;
+}
+
+.react-datepicker{
+  width: 250px;
+}
