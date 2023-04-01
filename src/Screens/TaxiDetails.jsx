@@ -16,8 +16,26 @@ const TaxiDetails = () => {
   const [destAddress, setDestAddress] = useState("")
   const [phoneNum, setValue] = useState();
   const [taxiDate, setTaxiDate] = useState(new Date())
-  const [carType, setCartype] = useState("Car Type");
+  const [carType, setCartype] = useState("");
 
+  const bounds = {
+    north: 23.63936,
+    south: 28.20453,
+    east: 68.14712,
+    west: 97.34466
+  }
+
+  // var bangaloreBounds = new google.maps.LatLngBounds(
+  //   new google.maps.LatLng(12.864162, 77.438610),
+  //   new google.maps.LatLng(13.139807, 77.711895));
+
+  const restrictions = {
+    country: 'in'
+  }
+
+  const options = {
+    strictBounds: true,
+  };
 
 
   const searchFromBox = useRef(null)
@@ -82,21 +100,24 @@ const TaxiDetails = () => {
           >
             <div className="row forms">
               <div className="col-md-5ths">
-              <div className="form-group">
-                <LoadScript libraries={["places"]} googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
-                  <StandaloneSearchBox
-                    onLoad={ref => searchFromBox.current = ref}
-                    onPlacesChanged={onFromChanged}
-                  >
-                    <input type="text"
-                      // value={fromAddress}
-                      name="from" placeholder="From Address..."
-                      className="ajaxField"
-                    // onChange={(e) => setFromAddress(e.target.value)} 
-                    />
-                  </StandaloneSearchBox>
-                </LoadScript>
-              </div>
+                <div className="form-group">
+                  <LoadScript libraries={["places"]} googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
+                    <StandaloneSearchBox
+                      onLoad={ref => searchFromBox.current = ref}
+                      onPlacesChanged={onFromChanged}
+                      bounds={bounds}
+                      restrictions={restrictions}
+                      options={options}
+                    >
+                      <input type="text"
+                        // value={fromAddress}
+                        name="from" placeholder="From Address..."
+                        className="ajaxField"
+                      // onChange={(e) => setFromAddress(e.target.value)} 
+                      />
+                    </StandaloneSearchBox>
+                  </LoadScript>
+                </div>
               </div>
               <div className="col-md-5ths">
                 <div className="form-group">

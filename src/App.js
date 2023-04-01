@@ -1,4 +1,11 @@
 import './App.css';
+// import "bootstrap/scss/bootstrap.scss";
+// import './assests/TaxiPark_files/font-awesome.css';
+// import './assests/TaxiPark_files/swiper.css';
+// import './assests/TaxiPark_files/swipebox.css';
+// import './assests/TaxiPark_files/zoomslider.css';
+// import './assests/TaxiPark_files/style.css';
+// import './assests/TaxiPark_files/jquery-ui.css';
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Home from './Screens/Home';
 import Header from './Screens/Header';
