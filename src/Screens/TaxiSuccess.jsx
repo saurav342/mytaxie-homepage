@@ -2,7 +2,7 @@ const TaxiSuccess = () => {
     return(
         <>
             <h3>
-                You have succesfully booked your Taxi.
+            Your taxi booking request has been taken, Please allow us some time to get back to you.
             </h3>
         </>
     );

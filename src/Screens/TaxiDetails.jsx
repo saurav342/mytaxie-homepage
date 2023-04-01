@@ -77,7 +77,7 @@ const TaxiDetails = () => {
       phoneNum === null ||
       startDate === ""
     ) {
-      alert("fill the data");
+      alert("Please fill the form");
     } else {
       const backEndURL = "https://api.mytaxie.com/v1/taxi";
       const whatsappCBUrl = "https://graph.facebook.com/v16.0/113290301716804/messages";
