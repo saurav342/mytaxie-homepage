@@ -5,18 +5,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
   LoadScript,
-  StandaloneSearchBox, useLoadScript
+  StandaloneSearchBox,
+  useLoadScript,
 } from "@react-google-maps/api";
 import { taxiType } from "../Utils/constants.js"
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const TaxiDetails = () => {
-  const navigate = useNavigate()
-  const [fromAddress, setFromAddress] = useState("")
-  const [destAddress, setDestAddress] = useState("")
+  const navigate = useNavigate();
+  const [fromAddress, setFromAddress] = useState("");
+  const [destAddress, setDestAddress] = useState("");
   const [phoneNum, setValue] = useState();
-  const [taxiDate, setTaxiDate] = useState(new Date())
-  const [carType, setCartype] = useState("");
+  const [taxiDate, setTaxiDate] = useState(new Date());
+  const [startDate, setStartDate] = useState();
+  const [carType, setCarType] = useState(taxiType);
 
   const bounds = {
     north: 23.63936,
@@ -38,50 +41,82 @@ const TaxiDetails = () => {
   };
 
 
-  const searchFromBox = useRef(null)
+  const searchFromBox = useRef(null);
   const onFromChanged = () => {
     const [place] = searchFromBox.current.getPlaces();
     if (place) {
-      setFromAddress(place.formatted_address)
-      console.log(place.formatted_address)
-      console.log(place.geometry.location.lat())
-      console.log(place.geometry.location.lng())
+      setFromAddress(place.formatted_address);
+      console.log(place.formatted_address);
+      console.log(place.geometry.location.lat());
+      console.log(place.geometry.location.lng());
     }
-  }
+  };
 
-
-  const searchToBox = useRef(null)
+  const searchToBox = useRef(null);
   const onToChanged = () => {
     const [place] = searchToBox.current.getPlaces();
     if (place) {
-      setDestAddress(place.formatted_address)
-      console.log(place.formatted_address)
-      console.log(place.geometry.location.lat())
-      console.log(place.geometry.location.lng())
+      setDestAddress(place.formatted_address);
+      console.log(place.formatted_address);
+      console.log(place.geometry.location.lat());
+      console.log(place.geometry.location.lng());
     }
-  }
+  };
   const handleLength = (e) => {
     if (e.target.value.length > e.target.maxLength) {
-      setValue("Enter valid number")
+      setValue("Enter valid number");
     }
-  }
+  };
+
 
   const handleData = (e) => {
     e.preventDefault();
-    axios
-      .post("https://api.mytaxie.com/v1/taxi", {
-        from: fromAddress,
-        to: destAddress,
-        phoneNumber: phoneNum,
-        date: taxiDate,
-        typeOfCar: carType
-      })
-      .then(function (response) {
-        console.log("...........response", response);
-      })
-      .finally(function () {
-        navigate("/taxiSuccess");
-      });
+    if (
+      fromAddress === "" ||
+      destAddress === "" ||
+      phoneNum === null ||
+      startDate === ""
+    ) {
+      alert("fill the data");
+    } else {
+      const backEndURL = "https://api.mytaxie.com/v1/taxi";
+      const whatsappCBUrl = "https://graph.facebook.com/v16.0/113290301716804/messages";
+      const headers = {
+        "Content-type": "application/json",
+        Authorization:
+          "Bearer EAAOh1MtDJVQBAPUaWHHpUubrKhEC7GsHZCSqIERazBXTj3zkuFd6Hc4tBco7TP10u9p77xDFS9M10CFgthham70X477UHFKqQgYKF212pwYCwjWs7T6BbMqMMZCFP18h4wHSfTqa0pZAx7y6lgMcCp55UiyqOwUFyCVXPsMPVLaCWOTV4ik92BMZCwdZBd84f0GZBigM5oWwZDZD",
+      };
+      const dataBodyForWhatsappMsg = {
+        messaging_product: "whatsapp",
+        to: "919155524079",
+        type: "template",
+        template: {
+          name: "hello_world",
+          language: {
+            code: "en_US",
+          },
+        },
+      };
+      axios
+        .all([
+          axios.post(backEndURL, {
+            from: fromAddress,
+            to: destAddress,
+            phoneNumber: phoneNum,
+            date: startDate,
+            typeOfCar: carType,
+          }),
+          axios.post(whatsappCBUrl, dataBodyForWhatsappMsg, {
+            headers: headers,
+          }),
+        ])
+        .then(function (response) {
+          console.log("...........response", response);
+        })
+        .finally(function () {
+          navigate("/taxiSuccess");
+        });
+    }
   };
 
   return (
@@ -121,19 +156,24 @@ const TaxiDetails = () => {
               </div>
               <div className="col-md-5ths">
                 <div className="form-group">
-                  <LoadScript libraries={["places"]} googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
+                  <LoadScript
+                    libraries={["places"]}
+                    googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI"
+                  >
                     <StandaloneSearchBox
-                      onLoad={ref => searchToBox.current = ref}
-                      onPlacesChanged={onToChanged}>
-                      <input type="text"
-                        // value={destAddress} 
-                        placeholder="To....." name="to"
+                      onLoad={(ref) => (searchToBox.current = ref)}
+                      onPlacesChanged={onToChanged}
+                    >
+                      <input
+                        type="text"
+                        // value={destAddress}
+                        placeholder="To....."
+                        name="to"
                         className="ajaxField"
                       // onChange={(e) => setDestAddress(e.target.value)}
                       />
                     </StandaloneSearchBox>
                   </LoadScript>
-
                 </div>
               </div>
               <div className="col-md-5ths">
@@ -147,27 +187,31 @@ const TaxiDetails = () => {
                     style={{ display: "flex" }}
                     maxLength="11"
                     onInput={handleLength}
-
                   />
                 </div>
               </div>
               <div className="col-md-5ths">
                 <div className="form-group">
-                  <input type="date" onChange={(e) => setTaxiDate(e.target.value)}
-                    value={taxiDate}
-                    className="ajaxFeild flightDetails"
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    minDate={new Date()}
+                    placeholderText="Select a date"
+                    showTimeSelect
+                    dateFormat="MMMM d, yyyy h:mm aa"
                   />
                 </div>
               </div>
               <div className="col-md-5ths">
                 <div className="form-group">
-                  <select className="ajaxField flightDetails"
-                    onChange={(e) => setCartype(e.target.value)}>
-                    <option value="">{carType}</option>{
-                      taxiType.map((taxi, index) => (
-                        <option>{taxi}</option>
-                      ))
-                    }
+                  <select
+                    className="ajaxField flightDetails"
+                    onChange={(e) => setCarType(e.target.value)}
+                  >
+                    <option disabled selected>Type of Car</option>
+                    {taxiType.map((taxi, index) => (
+                      <option>{taxi}</option>
+                    ))}
                   </select>
                 </div>
               </div>
