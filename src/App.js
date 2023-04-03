@@ -8,7 +8,8 @@ import Landing from './Screens/Landing';
 import ContactUs from './Screens/contactUs';
 import TaxiSuccess from './Screens/TaxiSuccess';
 import TaxiDatatable from './Screens/TaxiDataTable';
-import DataTable from "./Screens/DataTable"
+import DataTable from "./Screens/DataTable";
+import Test from "./Screens/Test"
 import './App.css';
 // import "bootstrap/scss/bootstrap.scss";
 // import './assests/TaxiPark_files/font-awesome.css';
@@ -30,6 +31,7 @@ function App() {
     <Route path="/flight" element={<FlightDetails/>}/>
     <Route path="/flightsuccess" element={<FlightSuccess/>}/>
     <Route path="/all" element={<DataTable/>}/>
+    <Route path="/test" element={<Test/>}/>
     <Route path="/landing" element={<Landing/>}/>
     <Route path="/contact" element={<ContactUs/>}/>
     <Route path ="/allTaxi" element={<TaxiDatatable/>}/>

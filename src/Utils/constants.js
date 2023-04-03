@@ -4,10 +4,35 @@ const flightData = ["Mumbai", "Chennai", "Kolkata", "Bangalore", "Lucknow", "Amr
 "Srinagar", "Imphal", "Jaipur", "Madurai", "Siliguri", "Patna", "Mangalore", "Chandigarh", "Ranchi"
 ];
 
+let optionsFromData = [
+    { value: 'Mumbai', label: 'Mumbai' },
+    { value: 'Bangalore', label: 'Bangalore' },
+    { value: 'Delhi', label: 'Delhi' },
+    { value: 'Kolkata', label: 'Kolkata' },
+    { value: 'Ranchi', label: 'Ranchi' },
+    { value: 'Patna', label: 'Patna' },
+    { value: 'Varanasi', label: 'Varanasi' },
+    { value: 'Lucknow', label: 'Lucknow' },
+    
+  ];
+
+  let optionsToData = [
+    { value: 'Mumbai', label: 'Mumbai' },
+    { value: 'Bangalore', label: 'Bangalore' },
+    { value: 'Delhi', label: 'Delhi' },
+    { value: 'Kolkata', label: 'Kolkata' },
+    { value: 'Ranchi', label: 'Ranchi' },
+    { value: 'Patna', label: 'Patna' },
+    { value: 'Varanasi', label: 'Varanasi' },
+    { value: 'Lucknow', label: 'Lucknow' },
+  ];
+
 const taxiType =["Mini", "Sedan","SUV"];
 
 
 module.exports={
     taxiType,
-    flightData
+    flightData,
+    optionsFromData,
+    optionsToData
 }
