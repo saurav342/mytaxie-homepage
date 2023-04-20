@@ -3,7 +3,7 @@ import Select from 'react-select';
 import PhoneInput from "react-phone-number-input";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { flightData, optionsFromData, optionsToData } from "../Utils/constants.js";
+import { flightData } from "../Utils/constants.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
@@ -12,13 +12,18 @@ const FlightDetails = () => {
   const navigate = useNavigate();
   const [fromCity, setFromCity] = useState(null);
   const [toCity, setToCity] = useState("");
-  const [phoneNum, setValue] = useState(null);
-  const [startDate, setStartDate] = useState("");
-  let optionsFrom = optionsFromData;
-  let optionsTo = optionsToData;
-  const [toCityList, setToCityList] = useState(optionsTo);
-  const [fromCityList, setFromCityList] = useState(optionsFrom);
-  const[msg, setMsg] = useState("")
+  const [fromCityList, setFromCityList] = useState(flightData);
+  const [toCityList, setToCityList] = useState(flightData);
+  const [phoneNum, setValue] = useState();
+  const [startDate, setStartDate] = useState();
+  // const [selectedOption, setSelectedOption] = useState(null);
+
+  const options = [
+    { value: 'Mumbai', label: 'Mumbai' },
+    { value: 'Bangalore', label: 'Bangalore' },
+    { value: 'Delhi', label: 'Delhi' },
+    { value: 'Kolkata', label: 'Kolkata' },
+  ];
 
   const handleLength = (e) => {
     if (e.target.value.length > e.target.maxLength) {
@@ -26,32 +31,41 @@ const FlightDetails = () => {
     }
   };
 
-  useEffect(() => {
-    if (fromCity && fromCity.value) {
-      console.log('......option to ........', optionsTo);
-      optionsTo = optionsTo.filter(eachTo => eachTo.value !== fromCity.value);
-      setToCityList(optionsTo);
-    }
-  }, [fromCity])
+  const handleFromCity = (e) => {
+    console.log('.....e.....value.......', e.value);
+    setFromCity(e.value)
+    // var fromCityListArr = flightData;
+    // var newarr = [];
+    // for (let i = 0; i < fromCityListArr.length - 1; i++) {
+    //   if (e.value != fromCityListArr[i]) {
+    //     newarr = [...newarr, fromCityListArr[i]];
+    //   }
+    // }
+    // console.log('.....from city......', fromCity);
+    // setToCityList(newarr);
+  };
 
-
-  useEffect(() => {
-    if (toCity && toCity.value) {
-      console.log('......options from ........', optionsFrom);
-      optionsFrom = optionsFrom.filter(eachFrom => eachFrom.value !== toCity.value);
-      setFromCityList(optionsFrom);
-    }
-  }, [toCity])
+  // const handleToCity = (e) => {
+  //   setToCity(e.value)
+  //   var cityListArr = flightData;
+  //   var newarr = [];
+  //   for (let i = 0; i < cityListArr.length - 1; i++) {
+  //     if (e.value != cityListArr[i]) {
+  //       newarr = [...newarr, cityListArr[i]];
+  //     }
+  //   }
+  //   setFromCityList(newarr);
+  // }
 
   const handleData = (e) => {
     e.preventDefault();
     if (
-      fromCity === null ||
-      toCity === "" ||
+      fromCity === "From ...." ||
+      toCity === "To...." ||
       phoneNum === null ||
       startDate === ""
     ) {
-      setMsg("Please fill the Required details")
+      return false;
     } else {
       const backendUrl = "https://api.mytaxie.com/v1/flight";
       const whatsappCBUrl =
@@ -112,27 +126,31 @@ const FlightDetails = () => {
               <div className="col-md-5ths">
                 <div className="form-group">
                   <Select
-                  className="select-placeholder"
-                    onChange={setFromCity}
-                    options={fromCityList}
+                    // defaultValue={fromCity}
+                    onChange={handleFromCity}
+                    options={options}
                     value={fromCity}
                     placeholder={"From City..."}
                   />
-                </div>
-              </div>
-              <div className="col-md-5ths">
-                <div className="form-group">
-                  <Select
-                  className="select-placeholder"
-                    defaultValue={toCity}
-                    onChange={setToCity}
-                    options={toCityList}
-                    value={toCity}
-                    placeholder={"To City..."}
-                  />
-                </div>
-              </div>
+                  {/*    <select
+                    className="ajaxField flightDetails"
+                    // onChange={handleFromCity}
+                    onClick={handleFromCity}
+                    value={fromCity}
+                    isOptionDisabled={true}
 
+                  // defaultValue = {"From...."}
+                  // required
+               > */}
+                  {/* <option value="" selected disabled> {fromCity}</option> */}
+                  {/* <option  selected disabled> From...</option> */}
+                  {/* {fromCityList.map((city, index) => (
+                      <option>{city}</option>
+                    ))}
+                  </select> */}
+                </div>
+              </div>
+             
               <div className="col-md-5ths">
                 <div className="form-group">
                   <PhoneInput
@@ -154,8 +172,8 @@ const FlightDetails = () => {
                     onChange={(date) => setStartDate(date)}
                     minDate={new Date()}
                     placeholderText="Select a date"
-                    // showTimeSelect
-                    // dateFormat="MMMM d, yyyy h:mm aa"
+                    showTimeSelect
+                    dateFormat="MMMM d, yyyy h:mm aa"
                   />
                 </div>
               </div>
@@ -172,7 +190,6 @@ const FlightDetails = () => {
               value="2"
               className="ajaxField"
             />
-             <p style={{color:"#FFC61A"}}>{msg}</p>
           </form>
 
           <div id="large-image">

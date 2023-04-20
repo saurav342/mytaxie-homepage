@@ -16,9 +16,30 @@ const TaxiDetails = () => {
   const navigate = useNavigate();
   const [fromAddress, setFromAddress] = useState("");
   const [destAddress, setDestAddress] = useState("");
-  const [phoneNum, setValue] = useState();
-  const [startDate, setStartDate] = useState();
+  const [phoneNum, setValue] = useState(null);
+  const [startDate, setStartDate] = useState("");
   const [carType, setCarType] = useState(taxiType);
+  const[msg, setMsg] = useState("")
+
+  const bounds = {
+    north: 23.63936,
+    south: 28.20453,
+    east: 68.14712,
+    west: 97.34466
+  }
+
+  // var bangaloreBounds = new google.maps.LatLngBounds(
+  //   new google.maps.LatLng(12.864162, 77.438610),
+  //   new google.maps.LatLng(13.139807, 77.711895));
+
+  const restrictions = {
+    country: 'in'
+  }
+
+  const options = {
+    strictBounds: true,
+  };
+
 
   const searchFromBox = useRef(null);
   const onFromChanged = () => {
@@ -54,9 +75,9 @@ const TaxiDetails = () => {
       fromAddress === "" ||
       destAddress === "" ||
       phoneNum === null ||
-      startDate === ""
+      startDate === "" 
     ) {
-      alert("fill the data");
+      setMsg("Please fill the required details")
     } else {
       const backEndURL = "https://api.mytaxie.com/v1/taxi";
       const whatsappCBUrl = "https://graph.facebook.com/v16.0/113290301716804/messages";
@@ -115,21 +136,19 @@ const TaxiDetails = () => {
             <div className="row forms">
               <div className="col-md-5ths">
                 <div className="form-group">
-                  <LoadScript
-                    libraries={["places"]}
-                    googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI"
-                  >
+                  <LoadScript libraries={["places"]} googleMapsApiKey="AIzaSyCv3GKI8_eQCSlfa9uHliYqy0_Y7o9bzMI">
                     <StandaloneSearchBox
-                      onLoad={(ref) => (searchFromBox.current = ref)}
+                      onLoad={ref => searchFromBox.current = ref}
                       onPlacesChanged={onFromChanged}
+                      bounds={bounds}
+                      restrictions={restrictions}
+                      options={options}
                     >
-                      <input
-                        type="text"
+                      <input type="text"
                         // value={fromAddress}
-                        name="from"
-                        placeholder="From Address..."
+                        name="from" placeholder="From Address..."
                         className="ajaxField"
-                        // onChange={(e) => setFromAddress(e.target.value)}
+                      // onChange={(e) => setFromAddress(e.target.value)} 
                       />
                     </StandaloneSearchBox>
                   </LoadScript>
@@ -151,7 +170,7 @@ const TaxiDetails = () => {
                         placeholder="To....."
                         name="to"
                         className="ajaxField"
-                        // onChange={(e) => setDestAddress(e.target.value)}
+                      // onChange={(e) => setDestAddress(e.target.value)}
                       />
                     </StandaloneSearchBox>
                   </LoadScript>
@@ -201,23 +220,24 @@ const TaxiDetails = () => {
                 className="btn btn-yellow btn-bg-dark btn-lg"
                 value="Submit"
               />
-              <input
+              {/* <input
                 type="hidden"
                 id="type"
                 name="type"
                 value="2"
                 className="ajaxField"
-              />
+              /> */}
             </div>
+            <p style={{color:"#FFC61A"}}>{msg}</p>
           </form>
 
           <div id="large-image">
             <img src="assests/TaxiPark_files/_car-big-2.png" alt="Taxi" />
-            <div className="dialog">
+            {/* <div className="dialog">
               <span className="fa fa-phone"></span>
               <h4 className="white">Call TAXI Now</h4>
               <h3 className="yellow">800-5-800</h3>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
