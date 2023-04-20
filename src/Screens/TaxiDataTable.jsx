@@ -1,10 +1,56 @@
 import axios from "axios";
 import { useTable } from "react-table";
 import React, { useEffect, useState } from "react";
+import Modal from 'react-modal';
 import "react-tabs/style/react-tabs.css";
 
 const TaxiDatatable = () => {
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      width: '600px',
+      height: '400px',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
   const [data, setTaxiData] = useState([]);
+  const[rowTaxiData, setRowTaxiData] = useState({});
+
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function handleClick(cell) {
+    setIsOpen(true);
+    const fromPlace = cell[0].value;
+    const toPlace = cell[1].value;
+    const phoneNumber = cell[2].value;
+    const dateOfTravel = cell[3].value;
+    const carType = cell[4].value;
+    const obj = {
+      fromPlace, toPlace, phoneNumber, dateOfTravel, carType
+    };
+    setRowTaxiData(obj);
+    console.log('.......1..........', cell);
+  }
 
   useEffect(() => {
     (async () => {
@@ -90,7 +136,8 @@ const TaxiDatatable = () => {
                       <tr {...row.getRowProps()}>
                         {row.cells.map((cell) => {
                           return (
-                            <td className="column1" {...cell.getCellProps()}>
+                            <td className="column1" {...cell.getCellProps()}
+                            onClick={()=> handleClick(row.cells)}>
                               {cell.render("Cell")}
                             </td>
                           );
@@ -103,7 +150,28 @@ const TaxiDatatable = () => {
             </div>
           </div>
         </div>
-      </div>
+     
+     
+        <div>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel=""
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Taxi Request details</h2>
+       
+        <div><b>From:</b> {rowTaxiData.fromPlace}</div>
+        <div><b>To:</b> {rowTaxiData.toPlace}</div>
+        <div><b>Date of Travel:</b> {rowTaxiData.dateOfTravel}</div>
+        <div><b>Phone number:</b> {rowTaxiData.phoneNumber}</div>
+        <div><b>Car type:</b> {rowTaxiData.carType}</div>
+        <br/>
+        <hr/>
+        <button onClick={closeModal}>close</button>
+      </Modal>
+    </div> </div>
     </>
   );
 };
