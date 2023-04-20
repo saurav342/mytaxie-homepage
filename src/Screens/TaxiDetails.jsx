@@ -16,10 +16,10 @@ const TaxiDetails = () => {
   const navigate = useNavigate();
   const [fromAddress, setFromAddress] = useState("");
   const [destAddress, setDestAddress] = useState("");
-  const [phoneNum, setValue] = useState();
-  const [taxiDate, setTaxiDate] = useState(new Date());
-  const [startDate, setStartDate] = useState();
+  const [phoneNum, setValue] = useState(null);
+  const [startDate, setStartDate] = useState("");
   const [carType, setCarType] = useState(taxiType);
+  const[msg, setMsg] = useState("")
 
   const bounds = {
     north: 23.63936,
@@ -75,9 +75,9 @@ const TaxiDetails = () => {
       fromAddress === "" ||
       destAddress === "" ||
       phoneNum === null ||
-      startDate === ""
+      startDate === "" 
     ) {
-      alert("Please fill the form");
+      setMsg("Please fill the required details")
     } else {
       const backEndURL = "https://api.mytaxie.com/v1/taxi";
       const whatsappCBUrl = "https://graph.facebook.com/v16.0/113290301716804/messages";
@@ -220,23 +220,24 @@ const TaxiDetails = () => {
                 className="btn btn-yellow btn-bg-dark btn-lg"
                 value="Submit"
               />
-              <input
+              {/* <input
                 type="hidden"
                 id="type"
                 name="type"
                 value="2"
                 className="ajaxField"
-              />
+              /> */}
             </div>
+            <p style={{color:"#FFC61A"}}>{msg}</p>
           </form>
 
           <div id="large-image">
             <img src="assests/TaxiPark_files/_car-big-2.png" alt="Taxi" />
-            <div className="dialog">
+            {/* <div className="dialog">
               <span className="fa fa-phone"></span>
               <h4 className="white">Call TAXI Now</h4>
               <h3 className="yellow">800-5-800</h3>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

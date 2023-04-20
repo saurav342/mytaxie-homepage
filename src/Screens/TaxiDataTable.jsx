@@ -2,14 +2,32 @@ import axios from "axios";
 import { useTable } from "react-table";
 import React, { useEffect, useState } from "react";
 import "react-tabs/style/react-tabs.css";
+import TaxiModal from "./TaxiModal";
+
+
 
 const TaxiDatatable = () => {
+  // let ariaHideApp={true};
+  let subtitle;
   const [data, setTaxiData] = useState([]);
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  // function afterOpenModal() {
+  //   subtitle.style.color = "#f00";
+  // }
+
+
 
   useEffect(() => {
     (async () => {
       const result = await axios("https://api.mytaxie.com/v1/taxi");
-      console.log(".............taxiData................", result);
+      result.data.forEach(eachData=>{
+        eachData.extraKey = "";
+      })
       setTaxiData(result.data);
     })();
   }, []);
@@ -38,6 +56,10 @@ const TaxiDatatable = () => {
           {
             Header: "Type of Car",
             accessor: "typeOfCar",
+          },
+          {
+            Header: "Action",
+            accessor: "extraKey",
           },
         ],
       },
@@ -90,11 +112,20 @@ const TaxiDatatable = () => {
                       <tr {...row.getRowProps()}>
                         {row.cells.map((cell) => {
                           return (
-                            <td className="column1" {...cell.getCellProps()}>
-                              {cell.render("Cell")}
-                            </td>
+                            <>
+                              <td className="column1" {...cell.getCellProps()}>
+                                {cell.render("Cell")}
+                              </td>
+                            </>
                           );
                         })}
+                        {/* <td className="column1">
+                          <button onClick={openModal}>Open Modal</button>
+                          <TaxiModal 
+                          modalData = {row}
+                          isOpen={modalIsOpen}
+                           />
+                        </td> */}
                       </tr>
                     );
                   })}
