@@ -12,14 +12,13 @@ const FlightDetails = () => {
   const navigate = useNavigate();
   const [fromCity, setFromCity] = useState(null);
   const [toCity, setToCity] = useState("");
-  // const [fromCityList, setFromCityList] = useState(flightData);
-  // const [toCityList, setToCityList] = useState(flightData);
-  const [phoneNum, setValue] = useState();
-  const [startDate, setStartDate] = useState();
+  const [phoneNum, setValue] = useState(null);
+  const [startDate, setStartDate] = useState("");
   let optionsFrom = optionsFromData;
   let optionsTo = optionsToData;
   const [toCityList, setToCityList] = useState(optionsTo);
   const [fromCityList, setFromCityList] = useState(optionsFrom);
+  const[msg, setMsg] = useState("")
 
   const handleLength = (e) => {
     if (e.target.value.length > e.target.maxLength) {
@@ -47,12 +46,12 @@ const FlightDetails = () => {
   const handleData = (e) => {
     e.preventDefault();
     if (
-      fromCity === "From ...." ||
-      toCity === "To...." ||
+      fromCity === null ||
+      toCity === "" ||
       phoneNum === null ||
       startDate === ""
     ) {
-      return false;
+      setMsg("Please fill the Required details")
     } else {
       const backendUrl = "https://api.mytaxie.com/v1/flight";
       const whatsappCBUrl =
@@ -113,6 +112,7 @@ const FlightDetails = () => {
               <div className="col-md-5ths">
                 <div className="form-group">
                   <Select
+                  className="select-placeholder"
                     onChange={setFromCity}
                     options={fromCityList}
                     value={fromCity}
@@ -123,6 +123,7 @@ const FlightDetails = () => {
               <div className="col-md-5ths">
                 <div className="form-group">
                   <Select
+                  className="select-placeholder"
                     defaultValue={toCity}
                     onChange={setToCity}
                     options={toCityList}
@@ -153,8 +154,8 @@ const FlightDetails = () => {
                     onChange={(date) => setStartDate(date)}
                     minDate={new Date()}
                     placeholderText="Select a date"
-                    showTimeSelect
-                    dateFormat="MMMM d, yyyy h:mm aa"
+                    // showTimeSelect
+                    // dateFormat="MMMM d, yyyy h:mm aa"
                   />
                 </div>
               </div>
@@ -171,6 +172,7 @@ const FlightDetails = () => {
               value="2"
               className="ajaxField"
             />
+             <p style={{color:"#FFC61A"}}>{msg}</p>
           </form>
 
           <div id="large-image">

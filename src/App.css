@@ -37,7 +37,7 @@
   }
 }
 .contactUsBox{
-  background-color: blueviolet;
+  background-color: #FFC61A;
 }
 
 .react-datepicker__navigation-icon {
@@ -51,6 +51,113 @@ body, div, table {
   font-size: 13px;
 }
 
-.react-datepicker{
-  width: 250px;
+.css-13cymwt-control{
+  min-height: 48px !important;
+}
+.react-datepicker__time-container {
+  width: 72px;
+}
+.login-page{
+  background-color: black;
+}
+
+.login{
+  margin: 0 auto;
+  max-width: 500px;
+}
+.login-header{
+  color: #FFC61A;
+  text-align: center;
+  font-size: 300%;
+}
+/* 
+.login-form h3{
+ text-align: left;
+ margin-left: 40px;
+ color: #fff;
+} */
+.login-form{
+  box-sizing: border-box;
+  padding-top: 15px;
+  padding-bottom: 10%;
+  text-align: -webkit-center;
+  background: #404040;
+}
+.login input[type="text"],.login input[type="password"],login input[type="submit"]{
+  max-width: 400px;
+  width: 80%;
+  line-height: 4em;
+  /* margin: auto; */
+  border-radius: 5px;
+  border: 2px solid #f2f2f2;
+  outline: none;
+  padding-left: 10px;
+}
+.usernameBox{
+  margin-top: 50px;
+}
+
+#homepage-block-3 {
+  background: #1F1F1F;
+  background-repeat: no-repeat;
+  background-position: 50% 90%;
+  height: 710px;
+  margin-top: -84px;
+  padding-top: 108px;
+  position: relative;
+}
+
+@media (max-width: 991px){
+   #homepage-block-3 {
+     height: 720px !important; 
+     padding-top: 108px;
+   }
+}
+
+/* .select-placeholder{
+  text-align: left;
+  margin-left: 13px;
+  font-size: 14px;
+  color: red;
+} */
+
+.css-1jqq78o-placeholder {
+  text-align: left;
+  color: hsl(0, 0%, 50%);
+  margin-left: 10px !important;
+  font-size: 16px;
+
+}
+.modal {
+  font-size: 12px;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
 }
