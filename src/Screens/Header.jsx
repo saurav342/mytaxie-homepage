@@ -22,9 +22,9 @@ const Header = () => {
 									<ul className="list-group">
 								       <li className="list-group-item"><a href="/">Home</a></li>
 								       <li className="list-group-item"><a href="/flight">Get Flight</a></li>
-								       <li className="list-group-item"><a href="/flight">Services</a></li>
+								       <li className="list-group-item"><a href="/">Services</a></li>
 							           <li className="list-group-item"><a href="/contact">Contact Us</a></li>
-								       <li className="list-group-item"><a href="/about">About Us</a></li>
+								       {/* <li className="list-group-item"><a href="/about">About Us</a></li> */}
 								    </ul>
 									</>
 								)}
