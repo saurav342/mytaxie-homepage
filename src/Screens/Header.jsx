@@ -46,7 +46,7 @@ const Header = () => {
 								</li> */}
 								<li><a href="/">Home</a></li>
 								<li><a href="/flight">Get Flight</a></li>
-								<li><a href="/flight">Services</a></li>
+								<li><a href="/">Services</a></li>
 								{/* <li className="hasSub">
 									<a href=" #">Our blog</a>
 									<ul className="sub-menu"><li><a href="  /blog.html">classNameic Blog</a></li><li><a href="  /blog-3.html">Blog without Sidebar</a></li><li><a href="  /post.html">Blog Post</a></li></ul>
@@ -57,7 +57,7 @@ const Header = () => {
 								</li>
 								<li><a href="  /testimonials.html">Testimonials</a></li> */}
 								<li><a href="/contact">Contact Us</a></li>
-								<li><a href="/about">About Us</a></li>
+								{/* <li><a href="/about">About Us</a></li> */}
 								{/* <li className="hasSub">
 									<a href=" #">Pages</a>
 									<ul className="sub-menu"><li><a href="  /typo.html">Typography</a></li><li><a href="  /shortcodes.html">Shortcodes</a></li></ul>
