@@ -136,103 +136,7 @@ const Home = () => {
 		</div>
 	</section>		
 	
-		<section id="testimonials">
-		<hr className="lg" />
-		<div className="container">
-			<h4 className="yellow">Happy Client's</h4>
-			<h2 className="h1">Testimonials</h2>
-			
-			<div className="swiper-container row swiper-container-horizontal" id="testimonials-slider">
-			<div className="swiper-wrapper transtioning">
-							<div className="col-md-4 col-sm-6 swiper-slide swiper-slide-active" style={{ width: "380px" }}>
-								<div className="inner matchHeight" style={{ height: "294px" }}>
-							<div className="text">
-								<p>Nullam orci dui, dictum et magna sollicitudin, tempor blandit
- erat. Maecenas suscipit tellus sit amet augue placerat fringilla a id 
-lacus. Fusce tincidunt in leo lacinia condimentum.</p>
-							</div>
-							<div className="quote">
-								<span className="fa fa-quote-left"></span>
-								<div className="name">Anastasia Stone</div>
-								<img src="TaxiPark_files/_client-1.jpg" alt="Client"/>
-							</div>
-						</div>
-					</div>
-					
-					<div className="col-md-4 col-sm-6 swiper-slide swiper-slide-next" style={{ width: "380px" }}>
-								<div className="inner matchHeight" style={{ height: "294px" }}>
-							<div className="text">
-								<p>Suspendisse nec arcu sed nibh lacinia pretium. Phasellus eros ligula, mattis id rutrum non, eleifend vitae lacus. </p>
-							</div>				
-							<div className="quote">		
-								<span className="fa fa-quote-left"></span>
-								<div className="name">Steven Rashford</div>
-								<img src="TaxiPark_files/_client-4.jpg" alt="Client"/>
-							</div>
-						</div>
-					</div>	
-					<div className="col-md-4 col-sm-6 swiper-slide" style={{ width: "380px" }}>
-								<div className="inner matchHeight" style={{ height: "294px" }}>
-							<div className="text">
-								<p>Quisque sollicitudin feugiat risus, eu posuere ex euismod eu.
- Phasellus hendrerit, massa efficitur dapibus pulvinar, sapien eros 
-sodales ante, euismod aliquet nulla metus a mauris. </p>
-							</div>			
-							<div className="quote">			
-								<span className="fa fa-quote-left"></span>
-								<div className="name">Patrick James</div>
-								<img src="TaxiPark_files/_client-5.jpg" alt="Client"/>
-							</div>
-						</div>
-					</div>
-					<div className="col-md-4 col-sm-6 swiper-slide" style={{ width: "380px" }}>
-								<div className="inner matchHeight" style={{ height: "294px" }}>
-							<div className="text">
-								<p>Nullam orci dui, dictum et magna sollicitudin, tempor blandit
- erat. Maecenas suscipit tellus sit amet augue placerat fringilla a id 
-lacus. Fusce tincidunt in leo lacinia condimentum.</p>
-							</div>
-							<div className="quote">
-								<span className="fa fa-quote-left"></span>
-								<div className="name">Anastasia Stone</div>
-								<img src="TaxiPark_files/_client-1.jpg" alt="Client" />
-							</div>
-						</div>
-					</div>	
-						<div className="col-md-4 col-sm-6 swiper-slide" style={{ width: "380px" }}>
-								<div className="inner matchHeight" style={{ height: "294px" }}>
-							<div className="text">
-								<p>Suspendisse nec arcu sed nibh lacinia pretium. Phasellus eros ligula, mattis id rutrum non, eleifend vitae lacus. </p>
-							</div>				
-							<div className="quote">		
-								<span className="fa fa-quote-left"></span>
-								<div className="name">Steven Rashford</div>
-								<img src="TaxiPark_files/_client-4.jpg" alt="Client" />
-							</div>
-						</div>
-					</div>	
-					<div className="col-md-4 col-sm-6 swiper-slide" style={{ width: "380px" }}>
-								<div className="inner matchHeight" style={{ height: "294px" }}>
-							<div className="text">
-								<p>Quisque sollicitudin feugiat risus, eu posuere ex euismod eu.
- Phasellus hendrerit, massa efficitur dapibus pulvinar, sapien eros 
-sodales ante, euismod aliquet nulla metus a mauris. </p>
-							</div>			
-							<div className="quote">			
-								<span className="fa fa-quote-left"></span>
-								<div className="name">Patrick James</div>
-								<img src="TaxiPark_files/_client-5.jpg" alt="Client" />
-							</div>
-						</div>
-					</div>					
-				</div>
-				<div className="arrows">
-					<a href="#" className="arrow-left fa fa-caret-left"></a>
-					<a href="#" className="arrow-right fa fa-caret-right"></a>
-				</div>				
-			</div>
-		</div>
-	</section>
+{/* 		
 			<div id="homepage-banners">
 		<div className="container">
 			<div className="row">
@@ -260,7 +164,7 @@ sodales ante, euismod aliquet nulla metus a mauris. </p>
 				</div>				
 			</div>
 		</div>
-	</section>
+	</section> */}
 
 	<section id="block-footer">
 		<div className="container">
