@@ -12,34 +12,39 @@ const Home = () => {
 
 			<TaxiDetails/>
 
-			<section id="services">
-				<div className="container">
-					<h4 className="yellow">Welcome</h4>
-					<h2 className="h1">Our Services</h2>
-					<div className="row">
-						<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{ height: "222px" }}>
-							<div className="image"><img src="assests/TaxiPark_files/_services-1.png" alt="Service" /></div>
-							<h5>Rapid city transfer</h5>
-							<p>We will bring you quickly and comfortably to anywhere in your city</p>
-						</div>
-						<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{ height: "222px" }}>
-							<div className="image"><img src="assests/TaxiPark_files/_services-2.png" alt="Service" /></div>
-							<h5>Booking a hotel</h5>
-							<p>If you need a comfortable hotel, our operators will book it for you, and take a taxi to the address</p>
-						</div>
-						<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{ height: "222px" }}>
-							<div className="image"><img src="assests/TaxiPark_files/_services-3.png" alt="Service" /></div>
-							<h5>Airport transfer</h5>
-							<p>We will bring you quickly and comfortably to anywhere in your city</p>
-						</div>
-						<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{ height: "222px" }}>
-							<div className="image"><img src="assests/TaxiPark_files/_services-4.png" alt="Service" /></div>
-							<h5>Baggage transport</h5>
-							<p>If you need a comfortable hotel, our operators will book it for you, and take a taxi to the address</p>
-						</div>
-					</div>
+
+		<section id="services">
+		<div className="container">
+			<h4 className="yellow">Welcome</h4>
+			<h2 className="h1">Our Services</h2>
+			<div className="row">
+				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
+					<div className="image"><img src="TaxiPark_files/_services-1.png" alt="Service"/></div>
+					<h5>Rapid city transfer</h5>
+					<p>We will bring you quickly and comfortably to anywhere in your city</p>
 				</div>
-			</section>		<section id="tariffs">
+				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
+					<div className="image"><img src="TaxiPark_files/_services-3.png" alt="Service"/></div>
+					<h5>Airport transfer</h5>
+					<p>We will bring you quickly and comfortably to anywhere in your city</p>
+				</div>
+
+				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
+					<div className="image"><img src="TaxiPark_files/_services-3.png" alt="Service"/></div>
+					<h5>Flight Booking</h5>
+					<p>Discover the world with ease-book flights to your dream destinations with our fast and reliable flight booking service</p>
+				</div>
+				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
+					<div className="image"><img src="TaxiPark_files/_services-1.png" alt="Service"/></div>
+					<h5>Hourly Booking</h5>
+					<p>Get where you need to be, when you need to be there - book a ride with our hourly cab service provider and enjoy flexible transportation on your terms.</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+			
+				<section id="tariffs">
 			<div className="container">
 			<h4 className="yellow">See Our</h4>
 			<h2 className="h1">Pricing</h2>
