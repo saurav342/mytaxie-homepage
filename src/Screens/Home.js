@@ -19,23 +19,23 @@ const Home = () => {
 			<h2 className="h1">Our Services</h2>
 			<div className="row">
 				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
-					<div className="image"><img src="TaxiPark_files/_services-1.png" alt="Service"/></div>
+					<div className="image"><img src="assests/TaxiPark_files/_services-1.png" alt="Service"/></div>
 					<h5>Rapid city transfer</h5>
 					<p>We will bring you quickly and comfortably to anywhere in your city</p>
 				</div>
 				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
-					<div className="image"><img src="TaxiPark_files/_services-3.png" alt="Service"/></div>
+					<div className="image"><img src="assests/TaxiPark_files/_services-3.png" alt="Service"/></div>
 					<h5>Airport transfer</h5>
 					<p>We will bring you quickly and comfortably to anywhere in your city</p>
 				</div>
 
 				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
-					<div className="image"><img src="TaxiPark_files/_services-3.png" alt="Service"/></div>
+					<div className="image"><img src="assests/TaxiPark_files/_services-3.png" alt="Service"/></div>
 					<h5>Flight Booking</h5>
 					<p>Discover the world with ease-book flights to your dream destinations with our fast and reliable flight booking service</p>
 				</div>
 				<div className="col-md-3 col-sm-6 col-ms-6 matchHeight" style={{height: "222px"}}>	
-					<div className="image"><img src="TaxiPark_files/_services-1.png" alt="Service"/></div>
+					<div className="image"><img src="assests/TaxiPark_files/_services-1.png" alt="Service"/></div>
 					<h5>Hourly Booking</h5>
 					<p>Get where you need to be, when you need to be there - book a ride with our hourly cab service provider and enjoy flexible transportation on your terms.</p>
 				</div>
@@ -52,7 +52,7 @@ const Home = () => {
 				<div className="col-md-3 col-sm-6">
 					<div className="item matchHeight" style={{height: "372px"}}>
 						<div className="image">
-						<img src="TaxiPark_files/_tariff-1.png" className="full-width" alt="Tariff"/></div>
+						<img src="assests/TaxiPark_files/_tariff-1.png" className="full-width" alt="Tariff"/></div>
 						<h4>MINI</h4>
 						<p>Standard mini for a drive around the city at your service</p>
 						<div className="price">11-12rs<span>/km</span></div>
@@ -60,7 +60,7 @@ const Home = () => {
 				</div>
 				<div className="col-md-3 col-sm-6">
 					<div className="item matchHeight" style={{ height: "371px" }}>
-						<div className="image"><img src="TaxiPark_files/_tariff-2.png" className="full-width" alt="Tariff"/></div>
+						<div className="image"><img src="assests/TaxiPark_files/_tariff-2.png" className="full-width" alt="Tariff"/></div>
 						<h4>Sedan</h4>
 						<p>Standard sedan for a drive around the city at your service</p>
 						<div className="price">14-15rs<span>/km</span></div>
@@ -68,7 +68,7 @@ const Home = () => {
 				</div>
 				<div className="col-md-3 col-sm-6">
 					<div className="item matchHeight vip" style={{ height: "371px" }}>
-						<div className="image"><img src="TaxiPark_files/_tariff-3.png" className="full-width" alt="Tariff"/></div>
+						<div className="image"><img src="assests/TaxiPark_files/_tariff-3.png" className="full-width" alt="Tariff"/></div>
 						<h4 className="red">SUV</h4>
 						<p>Standard SUV for a drive around the city at your service</p>
 						<div className="price">20-21rs<span>/km</span></div>
@@ -109,15 +109,15 @@ const Home = () => {
 				</div>				
 				<div className="col-md-4 col-md-pull-4 col-sm-12">
 					<div className="mob">
-						<a href="#"><img src="TaxiPark_files/_app-google.png" alt="App"/></a>
-						<a href="#"><img src="TaxiPark_files/_app-apple.png" alt="App"/></a>
+						<a href="#"><img src="assests/TaxiPark_files/_app-google.png" alt="App"/></a>
+						<a href="#"><img src="assests/TaxiPark_files/_app-apple.png" alt="App"/></a>
 					</div>
 				</div>
 
 			</div>
 		</div>
 	</section>			<section id="car-block">
-	 	<div className="car-right animation-block"><img src="TaxiPark_files/_car-big-side.png" alt="Car"/></div>
+	 	<div className="car-right animation-block"><img src="assests/TaxiPark_files/_car-big-side.png" alt="Car"/></div>
 		<div className="container">
 			<div className="row">
 				<div className="col-md-7">
@@ -215,7 +215,7 @@ const Home = () => {
 
 					<ul className="address">
 						<li><span className="fa fa-phone"></span>9620868501</li>
-						<li><span className="fa fa-phone"></span>9353096061</li>
+						<li><span className="fa fa-phone"></span>9801891099</li>
 
 						<li><span className="fa fa-envelope"></span><a href="#">mytaxie2022@gmail.com</a></li>
 					</ul>					
