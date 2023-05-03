@@ -7,6 +7,7 @@ import { flightData, optionsFromData, optionsToData } from "../Utils/constants.j
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
+import {server_url} from "../config/config.json"
 
 const FlightDetails = () => {
   const navigate = useNavigate();
@@ -53,7 +54,8 @@ const FlightDetails = () => {
     ) {
       setMsg("Please fill the Required details")
     } else {
-      const backendUrl = "https://api.mytaxie.com/v1/flight";
+      const backendUrl = `https://${server_url}/v1/flight`;
+
       const whatsappCBUrl =
         "https://graph.facebook.com/v16.0/113290301716804/messages";
       const headers = {

@@ -8,7 +8,6 @@ import TaxiModal from "./TaxiModal";
 
 
 const TaxiDatatable = () => {
-<<<<<<< HEAD
 
   const customStyles = {
     content: {
@@ -27,18 +26,12 @@ const TaxiDatatable = () => {
   const[rowTaxiData, setRowTaxiData] = useState({});
 
   let subtitle;
-=======
-  // let ariaHideApp={true};
-  let subtitle;
-  const [data, setTaxiData] = useState([]);
->>>>>>> e3d43cc7fdde6b7dd2f9faf0b0454b1256240a94
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
     setIsOpen(true);
   }
 
-<<<<<<< HEAD
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     subtitle.style.color = '#f00';
@@ -61,13 +54,6 @@ const TaxiDatatable = () => {
     setRowTaxiData(obj);
     console.log('.......1..........', cell);
   }
-=======
-  // function afterOpenModal() {
-  //   subtitle.style.color = "#f00";
-  // }
-
-
->>>>>>> e3d43cc7fdde6b7dd2f9faf0b0454b1256240a94
 
   useEffect(() => {
     (async () => {
@@ -159,18 +145,10 @@ const TaxiDatatable = () => {
                       <tr {...row.getRowProps()}>
                         {row.cells.map((cell) => {
                           return (
-<<<<<<< HEAD
                             <td className="column1" {...cell.getCellProps()}
                             onClick={()=> handleClick(row.cells)}>
                               {cell.render("Cell")}
                             </td>
-=======
-                            <>
-                              <td className="column1" {...cell.getCellProps()}>
-                                {cell.render("Cell")}
-                              </td>
-                            </>
->>>>>>> e3d43cc7fdde6b7dd2f9faf0b0454b1256240a94
                           );
                         })}
                         {/* <td className="column1">
