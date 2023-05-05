@@ -1,0 +1,13 @@
+.custom-modal{
+    content: {
+        width: 600px;
+        height: 400px;
+         top: 50% !important;
+		  left: 50% !important;
+		  right: auto !important;
+		  bottom: auto !important;
+		  margin-right: -50%;
+		  transform: translate(-50%, -50%);
+		  background-color: black;
+      }
+}

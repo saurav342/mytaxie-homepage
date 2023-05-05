@@ -17,6 +17,7 @@ import ProtectedRoutes from './ProtectedRoutes';
 import { useState } from 'react';
 import QuerySuccess from './Screens/QuerySuccess';
 import DriverKyc from './Screens/DriverKyc';
+import Footer from './Screens/Footer';
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
     <Route path="/driverkyc" element={<DriverKyc/>}/>
   </Routes>
   </BrowserRouter>
+   <Footer/>
   </>
   );
 }

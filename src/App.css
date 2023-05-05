@@ -83,6 +83,7 @@ body, div, table {
   /* text-align: -webkit-center; */
   text-align: center;
   background: #404040;
+  margin-bottom: 50px;
 }
 /* .login input[type="text"],.login input[type="password"],login input[type="submit"]{
   max-width: 400px;
@@ -107,7 +108,7 @@ body, div, table {
   background: #1F1F1F;
   background-repeat: no-repeat;
   background-position: 50% 90%;
-  height: 710px;
+  height: auto;
   margin-top: -84px;
   padding-top: 108px;
   position: relative;
@@ -115,7 +116,7 @@ body, div, table {
 
 @media (max-width: 991px){
    #homepage-block-3 {
-     height: 720px !important; 
+     /* height: 720px !important;  */
      padding-top: 108px;
    }
    .contact-md-4ths {
@@ -136,6 +137,11 @@ body, div, table {
   margin-left: 10px !important;
   font-size: 16px;
 
+}
+.modalHeading{
+  margin-top: 5px;
+  padding-left: 40px;
+  color: #FFC61A !important;
 }
 .modal {
   font-size: 12px;
@@ -169,4 +175,14 @@ body, div, table {
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
+}
+.btn-modal{
+ margin: 20px 170px;
+}
+
+.mrgAuto{
+  margin-bottom: auto !important;
+}
+.width340{
+  width: 340px;
 }

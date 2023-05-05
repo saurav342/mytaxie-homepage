@@ -11,7 +11,7 @@ import {
 import { taxiType } from "../Utils/constants.js"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import {service_url} from "../config/config.json"
+import service_url from "../config/config.json"
 
 const TaxiDetails = () => {
   const navigate = useNavigate();

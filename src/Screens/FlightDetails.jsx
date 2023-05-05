@@ -7,7 +7,7 @@ import { flightData, optionsFromData, optionsToData } from "../Utils/constants.j
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-phone-number-input/style.css";
-import {server_url} from "../config/config.json"
+import server_url from "../config/config.json"
 
 const FlightDetails = () => {
   const navigate = useNavigate();

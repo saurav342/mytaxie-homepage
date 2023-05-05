@@ -3,7 +3,8 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
-import {server_url} from "../config/config.json";
+import server_url from "../config/config.json";
+
 const ContactUs = () => {
   const navigate= useNavigate()
   const [name, setName] = useState("");
@@ -54,18 +55,18 @@ const ContactUs = () => {
             <h1> Contact Us </h1>
           </div>
           <div className="login-form">
-          <div className="contact-md-4ths">
+          <div>
             <input
               type="text"
               placeholder="Enter your name"
-              className=""
+              className="contact-md-4ths"
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
             </div>
-            <div className="contact-md-4ths">
+            <div>
             <PhoneInput
-              className="ajaxField flightDetails required"
+              className="ajaxField flightDetails required contact-md-4ths"
               placeholder="Enter phone number"
               defaultCountry="IN"
               value={phoneNum}
@@ -75,19 +76,19 @@ const ContactUs = () => {
               onInput={handleLength}
             />
             </div>
-            <div className="contact-md-4ths">
+            <div>
             <input
               type="email"
               placeholder="Enter email address"
-              className="ajaxField flightDetails required"
+              className="contact-md-4ths required"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             </div>
-            <div className="contact-md-4ths">
+            <div>
             <input
               type="text"
-              className="ajaxField flightDetails required"
+              className="contact-md-4ths required"
               placeholder="Mention Your Query"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
