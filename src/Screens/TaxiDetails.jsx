@@ -11,6 +11,7 @@ import {
 import { taxiType } from "../Utils/constants.js"
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import service_url from "../config/config.json"
 
 const TaxiDetails = () => {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ const TaxiDetails = () => {
     ) {
       setMsg("Please fill the required details")
     } else {
-      const backEndURL = "https://api.mytaxie.com/v1/taxi";
+      const backEndURL = `https://${service_url}/v1/taxi`;
       const whatsappCBUrl = "https://graph.facebook.com/v16.0/113290301716804/messages";
       const headers = {
         "Content-type": "application/json",

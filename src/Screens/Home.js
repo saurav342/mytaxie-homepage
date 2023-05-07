@@ -1,18 +1,60 @@
-import axios from "axios";
-import { useRef, useState } from "react";
 import PhoneInput from "react-phone-number-input";
-import { useNavigate } from "react-router-dom";
-import { taxiType } from "../Utils/constants.js";
+import React, { useState } from "react";
+import Modal from 'react-modal';
 import  TaxiDetails  from "./TaxiDetails";
+import axios from "axios";
 
 const Home = () => {
+	const customStyles = {
+		content: {
+		  top: '50%',
+		  left: '50%',
+		  right: 'auto',
+		  width: '600px',
+		//   height: '400px',
+		  bottom: 'auto',
+		  marginRight: '-50%',
+		  transform: 'translate(-50%, -50%)',
+		  backgroundColor: 'black'
+		},
+	  };
 
+	  const [name, setName] = useState("");
+	  const[phoneNum, setValue] = useState("");
+	  const[msg,setMsg]=useState("")
+	
+	let subtitle;
+	const [modalIsOpen, setIsOpen] = React.useState(false);
+  
+	function openModal() {
+	  setIsOpen(true);
+	}
+  
+	function afterOpenModal() {
+	  // references are now sync'd and can be accessed.
+	  subtitle.style.color = '#f00';
+	}
+  
+	function closeModal() {
+	  setIsOpen(false);
+	  setMsg("")
+	}
+  
+	function handleClick(cell) {
+	  setIsOpen(true);
+	//   setRowTaxiData(obj);
+	}
+    const handleClickModal =(e) =>{
+		e.preventDefault();
+		if(name === ""||phoneNum === ""){
+			setMsg("fill the details")
+		}else{
+           setMsg("done")
+		}
+	}
 	return  (
 		<>
-
-			<TaxiDetails/>
-
-
+		<TaxiDetails/>
 		<section id="services">
 		<div className="container">
 			<h4 className="yellow">Welcome</h4>
@@ -85,7 +127,7 @@ const Home = () => {
 			<div className="row">
 				<div className="col-md-4 col-sm-12">
 					<div className="items row">
-						<div className="col-md-2 visible-md visible-lg"><span className="num">01.</span></div>
+						<div className="col-md-2 visible-md visible-lg mrgAuto"><span className="num">01.</span></div>
 						<div className="col-md-10">
 							<h5 className="yellow">Fast booking</h5>
 						</div>
@@ -133,9 +175,9 @@ const Home = () => {
 						<li>Fixed price</li>
 						<li>Good application</li>
 						<li>Stable orders</li>
-					</ul>
-
-					<a href="#" className="btn btn-yellow btn-lg btn-white">Become a Driver</a>
+					</ul>			
+					<button  className="btn btn-yellow btn-lg btn-white" onClick={handleClick}>Become a Driver </button>
+					{/* <a href="#" className="btn btn-yellow btn-lg btn-white">Become a Driver</a> */}
 				</div>
 			</div>
 		</div>
@@ -223,14 +265,53 @@ const Home = () => {
 			</div>
 		</div>
 	</section>
-
+{/* 
 			<footer>
 				<div className="container">
 					<a href="http://like-themes.com/">Like-themes</a> 2017 © All Rights Reserved <a href="http://like-themes.com/taxipark/homepage-2.html#">Terms of use</a>
 					<a href="http://like-themes.com/taxipark/homepage-2.html#" className="go-top hidden-xs hidden-ms">1</a>
 				</div>
-			</footer>
+			</footer> */}
+			  <div>
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel=""
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)} className="modalHeading">Enter Your Contact Details</h2>
+		<div>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              className="contact-md-4ths"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            </div>
+            <div>
+            <PhoneInput
+              className="ajaxField flightDetails required contact-md-4ths"
+              placeholder="Enter phone number"
+              defaultCountry="IN"
+              value={phoneNum}
+              onChange={setValue}
+              style={{ display: "flex" }}
+              maxLength="11"
+            //   onInput={handleLength}
+            /><button  className="btn btn-yellow btn-lg btn-white btn-modal" onClick={handleClickModal}>Submit </button>
+			<br/>
+			<hr/>
+           <button onClick={closeModal} style={{color:"yellow"}}>close</button>
+		   <p style={{color:"#FFC61A",textAlign:"center"}}>{msg}</p>
+            </div>
+            
+       
+      </Modal>
+    </div>
 		</>
+		
 	) 
 }
 
