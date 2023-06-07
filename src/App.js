@@ -15,6 +15,9 @@ import Login from './Screens/Login';
 import TaxiModal from './Screens/TaxiModal';
 import ProtectedRoutes from './ProtectedRoutes';
 import { useState } from 'react';
+import QuerySuccess from './Screens/QuerySuccess';
+import DriverKyc from './Screens/DriverKyc';
+import Footer from './Screens/Footer';
 
 function App() {
   return (
@@ -29,15 +32,18 @@ function App() {
     <Route path="/flightsuccess" element={<FlightSuccess/>}/>
     <Route path="/test" element={<Test/>}/>
     <Route path="/landing" element={<Landing/>}/>
-    <Route path="/contact" element={<ContactUs/>}/>
+    <Route path="/contactus" element={<ContactUs/>}/>
     <Route path ="/allTaxi" element={<TaxiDatatable/>}/>
     <Route path="/loginAdmin" element={<Login/>}/>
     <Route path="/modal" element={<TaxiModal/>}/>
+    <Route path="/querySuccess" element={<QuerySuccess/>}/>
     <Route element={<ProtectedRoutes/>}>
          <Route path="/all" element={<DataTable/>}/>
     </Route>
+    <Route path="/driverkyc" element={<DriverKyc/>}/>
   </Routes>
   </BrowserRouter>
+   <Footer/>
   </>
   );
 }

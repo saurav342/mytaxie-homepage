@@ -3,11 +3,11 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
-import server_url from "../config/config.json";
 
-const ContactUs = () => {
+const DriverKyc = () => {
   const navigate= useNavigate()
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [query, setQuery] = useState("");
   const [phoneNum, setValue] = useState(null);
@@ -21,26 +21,14 @@ const ContactUs = () => {
   const handleSubmit = (e) => {
    e.preventDefault();
    if (
-    name === "" ||
+    firstName === "" ||
     phoneNum === null ||
     query === "" 
   ) {
     setMsg("Please fill the required details")
   } 
   else{
-    axios.post(`${server_url}/v1/contactus`, {
-      name: name,
-      phoneNumber: phoneNum,
-      email: email,
-     message: query
-    })
-    .then(function (response) {
-      console.log("...........response", response);
-    })
-    .finally(function () {
-      navigate("/querySuccess");
-    });
-  
+    navigate("/")
   }
   };
   return (
@@ -55,18 +43,27 @@ const ContactUs = () => {
             <h1> Contact Us </h1>
           </div>
           <div className="login-form">
-          <div>
+          <div className="contact-md-4ths">
             <input
               type="text"
-              placeholder="Enter your name"
-              className="contact-md-4ths"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              placeholder="First Name"
+              className=""
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             </div>
-            <div>
+            <div className="contact-md-4ths">
+            <input
+              type="text"
+              placeholder="Last Name"
+              className=""
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            </div>
+            <div className="contact-md-4ths">
             <PhoneInput
-              className="ajaxField flightDetails required contact-md-4ths"
+              className="ajaxField flightDetails required"
               placeholder="Enter phone number"
               defaultCountry="IN"
               value={phoneNum}
@@ -76,19 +73,19 @@ const ContactUs = () => {
               onInput={handleLength}
             />
             </div>
-            <div>
+            <div className="contact-md-4ths">
             <input
               type="email"
               placeholder="Enter email address"
-              className="contact-md-4ths required"
+              className="ajaxField flightDetails required"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
             </div>
-            <div>
+            <div className="contact-md-4ths">
             <input
               type="text"
-              className="contact-md-4ths required"
+              className="ajaxField flightDetails required"
               placeholder="Mention Your Query"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
@@ -109,4 +106,4 @@ const ContactUs = () => {
   );
 };
 
-export default ContactUs;
+export default DriverKyc;
