@@ -47,10 +47,7 @@ const Header = () => {
                 </button>
 
                 <a className="logo" href="/">
-                  <img
-                    src="assests/TaxiPark_files/logo-inner.png"
-                    alt="TaxiPark"
-                  />
+				<img src="assests/TaxiPark_files/logo-inner.png" alt="mytaxie" style={{height:70, width:200}}  />
                 </a>
               </div>
               <div id="navbar" className="navbar-collapse collapse">
